@@ -1,24 +1,26 @@
 package backjoon;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
+
 
 public class Q9375 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         PassionKing passionKing = new PassionKing();
-        Scanner sc = new Scanner(System.in);
-        int inputCountTC = sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int inputCountTC = Integer.parseInt(br.readLine());
+
 
         for (int i = 0; i < inputCountTC; i++) {
-            int inputCountCloths = sc.nextInt();
+            int inputCountCloths = Integer.parseInt(br.readLine());
 
             for (int j = 0; j < inputCountCloths; j++) {
-
-                String clothName = sc.next();
-                String clothType = sc.next();
-
+                String clothType = br.readLine().split(" ")[1];
                 passionKing.addNumOfCloths(clothType);
             }
             int result = passionKing.multipleEachClothTypes();
@@ -51,7 +53,6 @@ class PassionKing {
     void initHashMap() {
         clothsMap.clear();
     }
-
 
     int multipleEachClothTypes() {
         int result = baseNumCloth;
