@@ -12,9 +12,7 @@ public class Q9375 {
 
         PassionKing passionKing = new PassionKing();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         int inputCountTC = Integer.parseInt(br.readLine());
-
 
         for (int i = 0; i < inputCountTC; i++) {
             int inputCountCloths = Integer.parseInt(br.readLine());
