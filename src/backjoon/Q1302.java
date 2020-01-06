@@ -29,8 +29,8 @@ class BestSeller {
 
     private Map<String, Integer> bookMap = new HashMap<>();
     private int value;
-    private String bestSellerBook = "";
-    private int max = 0;
+    private String bestSellerBookKey = "";
+    private int bestSellerBookValue = 0;
 
     void addBook(String bookName) {
         if (checkContainsBook(bookName)) {
@@ -43,7 +43,6 @@ class BestSeller {
     }
 
     private boolean checkContainsBook(String bookName) {
-
         return bookMap.containsKey(bookName);
     }
 
@@ -52,18 +51,17 @@ class BestSeller {
             value = bookMap.get(key);
             toFindMaxNumOfBooks(key);
         }
-        return bestSellerBook;
+        return  bestSellerBookKey;
     }
 
     private void toFindMaxNumOfBooks(String key) {
-        if (max == value && bestSellerBook.compareTo(key) > 0) {
-            bestSellerBook = key;
-            max = value;
+        if (bestSellerBookValue == value &&  bestSellerBookKey.compareTo(key) > 0) {
+            bestSellerBookKey = key;
+            bestSellerBookValue = value;
         }
-        if (max < value) {
-            bestSellerBook = key;
-            max = value;
+        if (bestSellerBookValue < value) {
+            bestSellerBookKey = key;
+            bestSellerBookValue = value;
         }
     }
-
 }
