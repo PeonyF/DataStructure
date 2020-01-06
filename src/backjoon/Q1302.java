@@ -43,6 +43,7 @@ class BestSeller {
     }
 
     private boolean checkContainsBook(String bookName) {
+
         return bookMap.containsKey(bookName);
     }
 
