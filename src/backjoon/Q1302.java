@@ -20,7 +20,6 @@ public class Q1302 {
 
         String bestSellerBook = bestSeller.getBookName();
         System.out.println(bestSellerBook);
-
     }
 }
 
@@ -28,7 +27,7 @@ class BestSeller {
     private static final int baseBook = 1;
 
     private Map<String, Integer> bookMap = new HashMap<>();
-    private int value;
+    private int tmpValue;
     private String bestSellerBookKey = "";
     private int bestSellerBookValue = 0;
 
@@ -48,20 +47,20 @@ class BestSeller {
 
     String getBookName() {
         for (String key : bookMap.keySet()) {
-            value = bookMap.get(key);
-            toFindMaxNumOfBooks(key);
+            tmpValue = bookMap.get(key);
+            toFindBestSellerBook(key);
         }
         return  bestSellerBookKey;
     }
 
-    private void toFindMaxNumOfBooks(String key) {
-        if (bestSellerBookValue == value &&  bestSellerBookKey.compareTo(key) > 0) {
+    private void toFindBestSellerBook(String key) {
+        if (bestSellerBookValue == tmpValue &&  bestSellerBookKey.compareTo(key) > 0) {
             bestSellerBookKey = key;
-            bestSellerBookValue = value;
+            bestSellerBookValue = tmpValue;
         }
-        if (bestSellerBookValue < value) {
+        if (bestSellerBookValue < tmpValue) {
             bestSellerBookKey = key;
-            bestSellerBookValue = value;
+            bestSellerBookValue = tmpValue;
         }
     }
 }
