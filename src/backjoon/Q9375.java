@@ -32,30 +32,30 @@ class PassionKing {
     private static final int baseNumCloth = 1;
     private static final int naked = 1;
 
-    private Map<String, Integer> clothsList = new HashMap<>();
+    private Map<String, Integer> clothsMap = new HashMap<>();
 
     void addNumOfCloths(String clothType) {
         if (checkContainsKey(clothType)) {
-            int numOfCloths = clothsList.get(clothType);
-            clothsList.put(clothType, numOfCloths + baseNumCloth);
+            int numOfCloths = clothsMap.get(clothType);
+            clothsMap.put(clothType, numOfCloths + baseNumCloth);
         }
         if (!checkContainsKey(clothType)) {
-            clothsList.put(clothType, baseNumCloth);
+            clothsMap.put(clothType, baseNumCloth);
         }
     }
 
     private boolean checkContainsKey(String clothType) {
-        return clothsList.containsKey(clothType);
+        return clothsMap.containsKey(clothType);
     }
 
     void initHashMap() {
-        clothsList.clear();
+        clothsMap.clear();
     }
 
 
     int multipleEachClothTypes() {
         int result = baseNumCloth;
-        for (int cloth : clothsList.values()) {
+        for (int cloth : clothsMap.values()) {
             result *= cloth + baseNumCloth;
         }
         return result - naked;
