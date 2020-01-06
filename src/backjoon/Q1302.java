@@ -13,7 +13,7 @@ public class Q1302 {
         BestSeller bestSeller = new BestSeller();
         int countSoldBooks = Integer.parseInt(br.readLine());
 
-        for(int i=0; i<countSoldBooks; i++){
+        for (int i = 0; i < countSoldBooks; i++) {
             String bookName = br.readLine();
             bestSeller.addBook(bookName);
         }
@@ -32,7 +32,7 @@ class BestSeller {
     private String bestSellerBook = "";
     private int max = 0;
 
-    void addBook(String bookName){
+    void addBook(String bookName) {
         if (checkContainsBook(bookName)) {
             int countBook = bookMap.get(bookName);
             bookMap.put(bookName, countBook + baseBook);
@@ -42,25 +42,25 @@ class BestSeller {
         }
     }
 
-    private boolean checkContainsBook(String bookName){
-        return  bookMap.containsKey(bookName);
+    private boolean checkContainsBook(String bookName) {
+        return bookMap.containsKey(bookName);
     }
 
-    String getBookName(){
-        for(String key : bookMap.keySet()){
+    String getBookName() {
+        for (String key : bookMap.keySet()) {
             value = bookMap.get(key);
             toFindMaxNumOfBooks(key);
         }
         return bestSellerBook;
     }
 
-    private void toFindMaxNumOfBooks(String key){
-        if(max == value && bestSellerBook.compareTo(key) > 0 ){
+    private void toFindMaxNumOfBooks(String key) {
+        if (max == value && bestSellerBook.compareTo(key) > 0) {
             bestSellerBook = key;
             max = value;
         }
-        if(max < value){
-            bestSellerBook =key;
+        if (max < value) {
+            bestSellerBook = key;
             max = value;
         }
     }
