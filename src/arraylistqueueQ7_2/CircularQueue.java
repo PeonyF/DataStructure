@@ -1,83 +1,75 @@
 package arraylistqueueQ7_2;
 
 public class CircularQueue {
-    //private int front=0;
-    //private int rear=0;
-    //private int size = 0;
-    //private int[] elementData = new int[5];
-
     private int front;
     private int rear;
-    private int size;
+    private int queueSize;
+    private char[] itemArray;
 
-    private int[] elementData;
-
-    public CircularQueue(int size) {
-        this.size = size;
-        this.elementData = new int[this.size];
-        this.front = this.rear = -1;
+    public CircularQueue(int queueSize){
+        front = rear =0;
+        this.queueSize = queueSize;
+        itemArray = new char[this.queueSize];
     }
 
-    public void initializeStartOfArray() {
-        if (front == -1) {
-            front = 0;
+    private boolean isEmpty(){
+        return (front == rear);
+    }
+
+    private boolean isFull(){
+        return (((rear+1)% this.queueSize) ==front);
+    }
+
+    public void enQueue(char item){
+        if(isFull()){
+            System.out.println("inserting is fail, Array Circular queue is full!");
         }
-    }
-
-
-    public void enQueue(int element) {
-        if (isQueueFull()) {
-            System.out.println("Queue overflow error");
-        } else {
-            initializeStartOfArray();
-            if (rear + 1 == size) {
-                rear = 0;
-            } else {
-                rear++;
-            }
-            elementData[rear] = element;
-        }
-
-    }
-
-
-    public void deQueue() {
-        if (isQueueEmpty())
-            System.out.println("Queue underflow error");
         else {
-            elementData[front] = 0;
-            if (front == rear) {
-                front = rear = -1; // have no elements currently in queue
-            } else if (front + 1 == size) {
-                front = 0;
-            } else
-                front++;
+            rear = (rear+1)%this.queueSize;
+            itemArray[rear] = item;
+            System.out.println("InsertedItem : "+item);
         }
     }
 
-    public boolean isQueueEmpty() {
-        if (front == -1)
-            return true;
+    public char deQueue(){
+        if(isEmpty()){
+            System.out.println("Deleting fail, Array Circular queue is empty ");
+            return 0;
+        }
+        else{
+            front = (front+1) %this.queueSize;
+            return itemArray[front];
+        }
+    }
+
+    public void delete(){
+        if(isEmpty()){
+            System.out.println("Deleting fail, Array Circular queue is empty");
+        }
+        else {
+            front = (front+1)%this.queueSize;
+        }
+    }
+
+    public char peek(){
+        if(isEmpty()){
+            System.out.println("Peeking fail, Array Circular queue is empty");
+            return 0;
+        }
         else
-            return false;
+            return itemArray[(front+1)%this.queueSize];
     }
 
-
-    public boolean isQueueFull() {
-        if (rear + 1 == front) {
-            return true;
-        } else if ((front == 0) && (rear + 1 == size)) {
-            return true;
-        } else
-            return false;
-    }
-
-    public void printArray() {
-        for (int i = 0; i < size; i++) {
-            System.out.print(elementData[i] + " ");
+    public void printQueue(){
+        if(isEmpty()){
+            System.out.println("Array Circular queue is empty");
         }
-        System.out.println("front:" + front + ", rear:" + rear);
+        else{
+            System.out.printf("Array Circular Queue>> ");
+            for(int i=(front+1)%this.queueSize; i!=(rear+1)%this.queueSize; i=++i%this.queueSize){
+                System.out.printf("%c ",itemArray[i]);
+                System.out.println();
+            }
+        }
     }
-
-
 }
