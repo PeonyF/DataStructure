@@ -39,7 +39,7 @@ class InsertionSort {
     }
 }
 
-class Main {
+class InsertMain {
     public static void main(String[] args) {
         int[] insertArr = {69, 10, 30, 2, 16, 8, 31, 22};
         int size = insertArr.length;
