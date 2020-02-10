@@ -11,10 +11,10 @@ class QuickSort {
         System.out.printf("\n [퀵정렬%d 단계: pivot=%d] \n",++i, a[pivot]);
 
         while (L<R){
-            while ((a[L] < a[pivot]) && (L<R)){
+            while (comparePivotAndLeft(L,R,pivot,a)){
                 L++;
             }
-            while ((a[R] >= a[pivot]) && (L<R)){
+            while (comparePivotAndRight(L,R,pivot,a)){
                 R--;
             }
             if(L<R){
@@ -33,7 +33,15 @@ class QuickSort {
         return R;
     }
 
-    void swap(int [] a, int idx1, int idx2){
+    private boolean comparePivotAndLeft(int left, int right, int pivot, int[] quickSortArr){
+        return (left < right) && (quickSortArr[pivot] > quickSortArr[left]);
+    }
+
+    private boolean comparePivotAndRight(int left, int right, int pivot, int[] quickSortArr){
+        return (left < right) && (quickSortArr[pivot] <= quickSortArr[right]);
+    }
+
+    private void swap(int[] a, int idx1, int idx2){
         int temp = a[idx1];
         a[idx1] = a[idx2];
         a[idx2] = temp;
