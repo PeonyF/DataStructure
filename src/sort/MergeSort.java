@@ -4,28 +4,28 @@ class MergeSort {
     private int[] sorted = new int [30];
     private void mergeTwoArea(int[] unSortedArr, int left, int middle, int right){
         int size = unSortedArr.length;
-        int moveFromLeft,moveFromRight,sortedIdx,i;
-        moveFromLeft=left;
-        moveFromRight = middle+1;
+        int moveFromLeftArea,moveFromRightArea,sortedIdx,i;
+        moveFromLeftArea=left;
+        moveFromRightArea = middle+1;
         sortedIdx = left;
 
-        while (moveFromLeft<=middle && moveFromRight<=right){
-            if(unSortedArr[moveFromLeft] <= unSortedArr[moveFromRight]){
-              sorted[sortedIdx] = unSortedArr[moveFromLeft++];
+        while (moveFromLeftArea<=middle && moveFromRightArea<=right){
+            if(unSortedArr[moveFromLeftArea] <= unSortedArr[moveFromRightArea]){
+              sorted[sortedIdx] = unSortedArr[moveFromLeftArea++];
             }
             else {
-                sorted[sortedIdx] = unSortedArr[moveFromRight++];
+                sorted[sortedIdx] = unSortedArr[moveFromRightArea++];
             }
             sortedIdx++;
         }
 
-        if(moveFromLeft>middle){
-            for(i=moveFromRight; i<=right;i++,sortedIdx++){
+        if(moveFromLeftArea>middle){
+            for(i=moveFromRightArea; i<=right;i++,sortedIdx++){
                 sorted[sortedIdx] = unSortedArr[i];
             }
         }
         else{
-            for(i=moveFromLeft; i<=middle; i++,sortedIdx++){
+            for(i=moveFromLeftArea; i<=middle; i++,sortedIdx++){
                 sorted[sortedIdx] = unSortedArr[i];
             }
         }
@@ -39,13 +39,13 @@ class MergeSort {
         }
     }
 
-    void mergeSort(int[] a, int left, int right){
+    void mergeSort(int[] unsortedArr, int left, int right){
         int middle;
         if(left<right){
             middle = (left+right)/2;
-            mergeSort(a,left,middle);
-            mergeSort(a,middle+1,right);
-            mergeTwoArea(a,left,middle,right);
+            mergeSort(unsortedArr,left,middle);
+            mergeSort(unsortedArr,middle+1,right);
+            mergeTwoArea(unsortedArr,left,middle,right);
         }
     }
 }
