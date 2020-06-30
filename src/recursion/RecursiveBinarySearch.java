@@ -1,6 +1,6 @@
 package recursion;
 
-public class RecursiveBinaySearch {
+public class RecursiveBinarySearch {
     static int BSearchRecur(int ar[], int first, int last, int target){
         int mid;
         if(first>last) {
