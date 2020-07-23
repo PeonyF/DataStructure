@@ -1,4 +1,4 @@
-package javadatastrucureHanbit;
+package likendqueue_hanbit;
 
 
 public class LinkedQueue {
